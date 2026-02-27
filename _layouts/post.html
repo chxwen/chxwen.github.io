@@ -12,7 +12,7 @@
 <body>
 
   <div class="container-fluid">
-    {% include nav.html %}
+    {% include head-nav.html %}
 
 
     <div class="row">
@@ -25,11 +25,18 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12">
-        <hr>
-        <p class="text-center">Copyright &copy; {{ site.time | date: "%Y" }} {{ site.author | default: "浑水摸鱼" }}. All
-            rights reserved.</p>
-      </div>
+      <nav class="col-12 col-md-8 post-nav">
+        <ul class="pagination justify-content-between">
+          <li class="page-item {% if page.previous == nil %}disabled{% endif %}">
+            <a class="page-link" href="{{ page.previous.url }}" aria-label="Previous">
+              <span aria-hidden="true">&laquo; 上一篇</span>
+            </a>
+          </li>
+          <li class="page-item {% if page.next == nil %}disabled{% endif %}">
+            <a class="page-link" href="{{ page.next.url }}" aria-label="Next">
+              <span aria-hidden="true">下一篇 &raquo;</span>
+            </a>
+          </li>
     </div>
     {% include foot.html %}
   </div>
