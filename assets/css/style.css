@@ -1,8 +1,6 @@
+
 body {
     --bs-body-font-size: 1.5rem;
-    --bs-body-bg:#212529;
-    --bs-body-color:#fff;
-    --bs-secondary-color:#6c757d;
 }
 
 .post-content {
