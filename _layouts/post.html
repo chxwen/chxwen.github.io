@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="{{ site.lang | default: " en-US" }}">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  {% seo %}
+  {% include head.html %}
+</head>
+
+<body>
+
+  <div class="container-fluid">
+
+
+    <div id="title">
+      <h1>{{ site.title | default: site.github.repository_name }}</h1>
+      <p>{{ site.tagline | default: site.description | default: site.github.project_tagline }}</p>
+      <hr>
+
+    </div>
+    <div class="row">
+      <div class="col-8">
+        {{ content }}
+      </div>
+
+      <div class="col-4">
+        <div class="sidebar">
+          {% include sidebar.html %}
+        </div>
+      </div>
+</body>
+
+</html>
