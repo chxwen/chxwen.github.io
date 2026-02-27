@@ -12,7 +12,7 @@
 <body>
   <div class="container-fluid">
     {% include nav.html %}
-    
+    <div class="card-deck">
     {% for post in site.posts %}
     <div class="card" style="width: 18rem;">
       <div class="card-body">
@@ -23,7 +23,7 @@
       </div>
     </div>
     {% endfor %}
-    </ul>
+    </div>
   </div>
 </body>
 
