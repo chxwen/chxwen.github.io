@@ -1,54 +1,30 @@
 <!doctype html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="{{ site.lang | default: " en-US" }}">
 
-    {% seo %}
-    {% include head.html %}
-  </head>
-  <body>
-    <div class="container-fluid">
-  
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!--
-      <div id="header">
-        <nav>
-          <ul>
-            <li class="fork"><a href="{{ site.github.repository_url }}">View On GitHub</a></li>
-            {% if site.show_downloads %}
-              <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
-              <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
-              <li class="title">DOWNLOADS</li>
-            {% endif %}
-          </ul>
-        </nav>
+  {% seo %}
+  {% include head.html %}
+</head>
+
+<body>
+  <div class="container-fluid">
+    {% include nav.html %}
+    
+    {% for post in site.posts %}
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{ post.date | date: "%Y-%m-%d" }}</h6>
+        <p class="card-text">{{ post.excerpt }}</p>
+        <a href="{{ post.url }}" class="btn btn-primary" target="_blank">阅读</a>
       </div>
-    -->
-
-    <div class="wrapper">
-
-      <section>
-        <div id="title">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-          <p>{{ site.tagline | default: site.description | default: site.github.project_tagline }}</p>
-          <hr>
-          
-        </div>
-
-        <ul>
-  {% for post in site.posts %}
-    <li>
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      {{ post.excerpt }}
-    </li>
-  {% endfor %}
-</ul>
-
-      </section>
-
     </div>
-      </div>
-  </body>
-</html>
+    {% endfor %}
+    </ul>
+  </div>
+</body>
 
+</html>
