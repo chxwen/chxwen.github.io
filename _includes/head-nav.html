@@ -1,5 +1,6 @@
 <div id="title" class="text-center">
-    <h1><a href="{{ site.baseurl }}/" class="text-decoration-none">{{ site.title | default: site.github.repository_name }}</a></h1>
+    <h1><a href="{{ site.baseurl }}/" class="text-decoration-none">{{ site.title | default: site.github.repository_name
+            }}</a></h1>
     <p>{{ site.tagline | default: site.description | default: site.github.project_tagline }}</p>
 </div>
 <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top mb-4">
@@ -11,12 +12,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% for item in site.data.nav %}
+                {% if item.link %}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" href="{{ item.link }}">{{ item.name }}</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                {% else %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        {{ item.name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        {% for subitem in item %}
+                        {% if subitem.link %}
+                        <li><a class="dropdown-item" href="{{ subitem.link }}">{{ subitem.name }}</a></li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
                 </li>
+                {% endif %}
+                
+                {% endfor %}
+               
                 <!--
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

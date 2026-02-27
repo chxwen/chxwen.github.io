@@ -1,4 +1,9 @@
 - name: Home
   link: /
+- name: Resources
+  - name: GitHub
+    link: https://github.com
+  - name: Jekyll
+    link: https://jekyllrb.com
 - name: About
   link: /about
