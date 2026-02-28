@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 function onClickSearchButton(evt){
     const form=evt.target.closest('form');
-    const searchInput = form.querySelector('input[name="search-input"]');
+    const searchInput = form.querySelector('input[id="search-input"]');
     const query = searchInput.value.trim();
     if(query){
         const action=form.getAttribute('action');
