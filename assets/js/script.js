@@ -7,7 +7,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
 function onClickSearchButton(evt){
     const form=evt.target.closest('form');
-    const searchInput = form.querySelector('input[name="q"]');
+    const searchInput = form.querySelector('input[name="search-input"]');
     const query = searchInput.value.trim();
     if(query){
         const action=form.getAttribute('action');
@@ -16,4 +16,5 @@ function onClickSearchButton(evt){
     }else{
         alert("请输入搜索内容");
     }
+    return false;
 }
