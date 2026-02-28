@@ -14,7 +14,7 @@
     <script>
         $(window).on("load", function () {
             GreenAudioPlayer.init({
-                selector: '.audio-item',
+                selector: '.audio-player',
                 stopOthersOnPlay: true
             });
         });
@@ -26,15 +26,19 @@
         {% include head-nav.html %}
         <ol class="list-group list-group-numbered">
 
-            {% for audio in site.data.audio %}
+            {% for audio in site.static_files %}
+            {% if audio.path contains "assets/audio" %}
             <li class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto audio-item">
-                    <div class="fw-bold">{{ audio.name }}</div>
-                    <audio>
-                        <source src="{{ audio.link | relative_url }}" type="audio/mpeg">
-                    </audio>
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{ audio.basename }}</div>
+                    <div class="audio-player">
+                        <audio>
+                            <source src="{{ audio.path | relative_url }}" type="audio/mpeg">
+                        </audio>
+                    </div>
                 </div>
             </li>
+            {% endif %}
             {% endfor %}
         </ol>
 
