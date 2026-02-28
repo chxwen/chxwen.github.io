@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{ site.lang | default: " en-US" }}" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% seo %}
+
+    {% include head.html %}
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/css/green-audio-player.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/greghub/green-audio-player/dist/js/green-audio-player.min.js"></script>
+    <script>
+        $(window).on("load", function () {
+            new GreenAudioPlayer(".audio-item", {
+                stopOthersOnPlay: true,
+                showDownloadButton: true,
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        {% include head-nav.html %}
+        <div class="row">
+            <div class="col-12">
+                <div class="audio-item">
+                    <audio>
+                        <source src="{{ '/assets/audio/274 陪读1.mp3' | relative_url }}" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="audio-item">
+                    <audio>
+                        <source src="{{ '/assets/audio/274 陪读2.mp3' | relative_url }}" type="audio/mpeg">
+                    </audio>
+                </div>
+            </div>
+        </div>
+        {% include foot.html %}
+    </div>
+
+</body>
+
+</html>
