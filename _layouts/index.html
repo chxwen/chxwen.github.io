@@ -21,7 +21,7 @@
           <h6 class="card-subtitle mb-2 text-body-secondary">by {{ post.author | default: "浑水摸鱼" }} {{ post.date |
             date:
             "%Y-%m-%d" }}</h6>
-          <p class="card-text">{{ post.excerpt }}</p>
+          <p class="card-text">{{ post.excerpt | strip_html | strip_newlines | escape | truncate: 100 }}</p>
           <a href="{{ post.url }}" class="btn btn-primary" target="_blank">阅读</a>
         </div>
       </div>
