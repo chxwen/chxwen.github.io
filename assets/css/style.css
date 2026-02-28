@@ -11,3 +11,7 @@ body {
 .post-content p {
     margin-bottom: 1.5rem;
 }
+.card-table {
+   table-layout: fixed; /* Forces equal column widths */
+   width: 100%; /* Ensures table spans full container */
+}
