@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="{{ site.lang | default: " en-US" }}" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    {% seo %}
+    {% include head.html %}
+    <script src={{ '/assets/js/search.js?v=' | append: site.github.build_revision | relative_url }}></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var query = new URLSearchParams(window.location.search).get('q');
+            if (query) {
+                document.getElementById('search-input').value = query;
+                const searchInput = document.getElementById('search-input');
+
+                const searchResults = document.getElementById('search-results');
+                const query = searchInput.value.trim();
+
+                SimpleJekyllSearch({
+                    searchInput: document.getElementById('search-input'),
+                    resultsContainer: document.getElementById('search-results'),
+                    json: '/pages/search.json'
+                })
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        {% include head-nav.html %}
+        <input type="hidden" id="search-input" value="{{ page.q | default: '' }}">
+        <div id="search-results" class="mt-4"></div>
+        {% include foot.html %}
+    </div>
+</body>
+
+</html>
