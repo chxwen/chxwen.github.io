@@ -7,6 +7,7 @@
 
     {% seo %}
     {% include head.html %}
+    {% include search.json %}
     <script src={{ '/assets/js/search.js?v=' | append: site.github.build_revision | relative_url }}></script>
     <script>
         window.addEventListener('DOMContentLoaded', function () {
@@ -14,14 +15,25 @@
             console.log('Search query:', query);
             if (query) {
                 document.getElementById('search-input').value = query;
+                window.fetch('/pages/search.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Search data:', data);
+                        const searchResults = document.getElementById('search-results');
+                        const results = data.filter(item => item.title.toLowerCase().includes(query.toLowerCase()));
+                        if (results.length > 0) {
+                            const html = "<ul>" + 
+                                results.map(result => `<li><a href="${result.url}">${result.title}</a></li>`).join('') 
+                                + "</ul>";
+                            searchResults.innerHTML = html;
+                        } else {
+                            searchResults.innerHTML = '<p class="text-center">没有找到相关内容</p>';
+                        }
+                    });
 
-                SimpleJekyllSearch({
-                    searchInput: document.getElementById('search-input'),
-                    resultsContainer: document.getElementById('search-results'),
-                    json: '/pages/search.json'
-                })
             }
         });
+
     </script>
 
 </head>
@@ -29,7 +41,7 @@
 <body>
     <div class="container-fluid">
         {% include head-nav.html %}
-        
+
         <div id="search-results" class="mt-4"></div>
         {% include foot.html %}
     </div>
